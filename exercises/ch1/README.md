@@ -64,3 +64,15 @@ jt@jt-ubuntu:~/Desktop/project/C++ Primer/exercises/ch1$ ./target/ex1_17
 ```
 
 ## Exercises 1.19
+
+## Exercises 1.20
+
+## Exercises 1.21
+
+## Exercises 1.22
+
+## Exercises 1.23
+
+## Exercises 1.24
+
+## Exercises 1.25
