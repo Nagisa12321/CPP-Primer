@@ -86,3 +86,85 @@ double salary = warge = 9.99;
 ```c++
 int i = 3.14;
 ```
+
+## Exercises 2.10
+
+## Exercises 2.11
+- (a)
+```c++
+extern int ix = 1024 // define
+```
+- (b) 
+```c++
+int ty  // define
+```
+- (c)
+```c++
+extern int iz // extern
+```
+
+## Exercises 2.12
+
+## Exercises 2.13
+- 100 45
+
+## Exercises 2.14
+
+## Exercises 2.15
+- (a)
+```c++
+int ival = 1.01;
+```
+- (b)
+```c++
+// int &rval1 = 1.01;
+```
+- (c)
+```c++
+int &rval2 = ival;
+```
+- (d)
+```c++
+// int rval3;
+```
+
+## Exercises 2.16
+
+## Exercises 2.17 
+
+## Exercises 2.18
+
+## Exercises 2.19
+- 指针和引用的区别? 
+	- 引用会绑定值, 指针不会
+	- 引用不会开辟内存空间, 指针会
+	- 引用不能不初始化, 而指针可以
+
+## Exercises 2.20 
+
+## Exercises 2.21
+
+## Exercises 2.22
+- 
+``` c++
+if(p) {
+    // ... 
+    // if the pointer p is not a null pointer
+    // then do this
+}
+
+if (*p) {
+    // ... 
+    // if the value of pointer p point to is not 0
+    // then to this 
+}
+```
+
+## Exercises 2.23
+- can not
+
+## Exercises 2.24
+
+## Exercises 2.25
+
+## Exercises 2.26
