@@ -168,3 +168,35 @@ if (*p) {
 ## Exercises 2.25
 
 ## Exercises 2.26
+
+## Exercises 2.27
+
+## Exercises 2.28
+
+## Exercises 2.29
+
+## Exercises 2.30
+
+## Exercises 2.31
+
+## Exercises 2.32
+
+## Exercises 2.33
+
+## Exercises 2.34
+
+## Exercises 2.35
+
+## Exercises 2.36
+
+## Exercises 2.37
+
+## Exercises 2.38
+
+## Exercises 2.39
+
+## Exercises 2.40
+
+## Exercises 2.41
+
+## Exercises 2.42
