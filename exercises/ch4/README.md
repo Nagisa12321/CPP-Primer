@@ -59,3 +59,23 @@ if (i == 1024) {
 - ++i, add the val of i, and return it;
 - i++, store the value of i named tmp, add i, and return tmp;
 - https://stackoverflow.com/questions/24853/what-is-the-difference-between-i-and-i
+
+## Exercises 4.18
+
+## Exercises 4.19
+
+## Exercises 4.20
+
+## Exercises 4.21
+
+## Exercises 4.22
+
+## Exercises 4.23
+
+## Exercises 4.24
+- finalgrade = ((grade > 90) ? "high pass" : (grade < 60)) ? "fail" : "pass";
+
+## Exercises 4.25
+
+## Exercises 4.26
+- `int` might be 16 bits;
