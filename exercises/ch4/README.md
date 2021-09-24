@@ -79,3 +79,17 @@ if (i == 1024) {
 
 ## Exercises 4.26
 - `int` might be 16 bits;
+
+## Exercises 4.27
+## Exercises 4.28
+## Exercises 4.28
+## Exercises 4.30
+## Exercises 4.31
+## Exercises 4.32
+## Exercises 4.33
+## Exercises 4.34
+## Exercises 4.35
+## Exercises 4.30
+## Exercises 4.37
+## Exercises 4.38
+- cast j/i to double
