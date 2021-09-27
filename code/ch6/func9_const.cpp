@@ -25,6 +25,10 @@ int main() {
     string::size_type ctr = 0;
 
     reset(&i);
-    reset(&ci);
+    // reset(&ci);
+    reset(i);
+    // reset(ci);
+    // reset(42);
+    // reset(ctr);
     return 0;
 }

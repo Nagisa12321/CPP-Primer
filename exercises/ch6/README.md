@@ -48,3 +48,52 @@ double square(double x)
     - Because c may be a temp varable, such as find_char(s, 'a', occurs)
 - What would happen if we made s a plain reference? What if we made occurs a reference to const?
     - s could be changed in the function, and occurs would not be changed. so occurs = 0; is an error.
+
+## Exercises 6.16
+```c++
+bool is_empty(const string &s) { return s.empty(); }
+```
+
+## Exercises 6.17
+
+## Exercises 6.18
+```c++
+// (a)
+bool compare(matrix &m1, matrix &m2);
+
+// (b)
+vector<int>::iterator change_val(int val, vector<int>::iterator it);
+```
+
+## Exercises 6.19
+```c++
+double calc(double);
+int count(const string &, char);
+int sum(vector<int>::iterator, vector<int>::iterator, int);
+vector<int> vec(10);
+
+// (a)
+calc(23.4, 55.1); // to much ....
+
+// (b) - right
+count("abcda", 'a');
+
+// (c) - right
+calc(66);
+
+// (d) - right
+sum(vec.begin(), vec.end(), 3.8);
+```
+
+## Exercises 6.20
+## Exercises 6.21
+## Exercises 6.22
+## Exercises 6.23
+## Exercises 6.24
+## Exercises 6.25
+## Exercises 6.26
+## Exercises 6.27
+## Exercises 6.28
+- const string &
+## Exercises 6.29
+- depending on the type is PODType or not.
