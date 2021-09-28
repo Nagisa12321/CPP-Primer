@@ -97,3 +97,57 @@ sum(vec.begin(), vec.end(), 3.8);
 - const string &
 ## Exercises 6.29
 - depending on the type is PODType or not.
+## Exercises 6.30
+## Exercises 6.31
+## Exercises 6.32
+## Exercises 6.33
+## Exercises 6.34
+- return 0
+- stack overflow
+## Exercises 6.35
+## Exercises 6.36
+## Exercises 6.37
+## Exercises 6.38
+## Exercises 6.39
+```c++
+// (a)
+int calc(int, int);
+int calc(const int, const int); // error
+
+// (b)
+int get();
+double get(); // error
+
+// (c)
+int *reset(int *);
+double *reset(double *);
+```
+
+## Exercises 6.40
+```c++
+// (a) - ok
+int ff(int a, int b = 0, int c = 0);
+
+// (b) - error
+int *init(char ht = 24, int wd, char bk);
+
+```
+
+## Exercises 6.41
+```c++
+// (a) error
+init();
+
+// (b) ok
+init(24, 10);
+
+// (c) ok but init(24, 10, '*')
+init(14, '*')
+
+```
+
+## Exercises 6.42
+## Exercises 6.43
+- a;
+## Exercises 6.44
+## Exercises 6.45
