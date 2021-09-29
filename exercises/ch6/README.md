@@ -151,3 +151,66 @@ init(14, '*')
 - a;
 ## Exercises 6.44
 ## Exercises 6.45
+## Exercises 6.46
+## Exercises 6.47
+## Exercises 6.48
+## Exercises 6.49
+- candidate function:
+
+    - Set of functions that are considered when resolving a function call. (all the functions with the name used in the call for which a declaration is in scope at the time of the call.)
+
+- viable function:
+
+    - Subset of the candidate functions that could match a given call. It have the same number of parameters as arguments to the call, and each argument type can be converted to the corresponding parameter type.
+
+## Exercises 6.50
+```c++
+void f();                       // 1
+void f(int);                    // 2
+void f(int, int);               // 3    
+void f(double, double = 3.14);  // 4
+
+// (a) - error
+f(2.56, 42);
+
+// (b) - 2
+f(42); 
+
+// (c) - 3
+f(42, 0);
+
+// (d) - 4
+f(2.56, 3.14);
+```
+
+## Exercises 6.51
+## Exercises 6.52
+```c++
+void manip(int, int);
+double dobj;
+
+// (a) - level3
+manip('a', 'z');
+
+// (b) - lavel4
+manip(55.4, dobj);
+```
+
+## Exercises 6.53
+```c++
+// (a)
+int calc(int&, int&);
+int calc(const int &, const int &);
+
+// (b)
+int calc(char *, char *);
+int calc(const char *, const char *);
+
+// (c) - error
+int calc(char *, char *);
+int calc(char *const, char *const);
+```
+
+## Exercises 6.54
+## Exercises 6.55
+## Exercises 6.56
