@@ -49,3 +49,62 @@ if (read(read(cin, data1), data2));
 - Cons: 
     - lessens encapsulation and therefore maintainability.
     code verbosity, declarations inside the class, outside the class.
+
+## Exercises 7.21
+## Exercises 7.22
+## Exercises 7.23
+## Exercises 7.24
+## Exercises 7.22
+- The class below can rely on it.
+
+## Exercises 7.23
+## Exercises 7.24
+## Exercises 7.25
+## Exercises 7.26
+## Exercises 7.27
+## Exercises 7.28
+- It is like to do 
+```c++
+screen my_screen(5, 5, 'X');
+screen tmp1 = my_screen.move(4, 0);
+screen tmp2 = tmp1.set('#');
+tmp2.display(cout);
+
+my_screen.display();
+```
+- so we can see 2 different results!
+
+## Exercises 7.29
+## Exercises 7.30
+**Pros**
+
+- more explicit
+- less scope for misreading
+- can use the member function parameter which name is same as the member name.
+
+        void setAddr(const std::string &addr) { this->addr = addr; }
+
+**Cons**
+
+- more to read
+- sometimes redundant
+
+        std::string getAddr() const { return this->addr; } // unnecessary
+
+## Exercises 7.31
+## Exercises 7.32
+## Exercises 7.33
+```c++
+inline screen::pos screen::size() const {
+    return width * height;
+}
+
+```
+## Exercises 7.34
+- can't find `pos`
+## Exercises 7.35
+## Exercises 7.36
+## Exercises 7.37
+## Exercises 7.38
+## Exercises 7.39
+- no
