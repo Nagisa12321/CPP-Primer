@@ -55,9 +55,9 @@ class Sales_item
 public:
     // constructors are explained in section 7.1.4, pages 262 - 265
     // default constructor needed to initialize members of built-in type
-    explicit Sales_item() = default;
-    explicit Sales_item(const std::string &book) : bookNo(book) {}
-    explicit Sales_item(std::istream &is) { is >> *this; }
+    Sales_item() = default;
+    Sales_item(const std::string &book) : bookNo(book) {}
+    Sales_item(std::istream &is) { is >> *this; }
 
 public:
     // operations on Sales_item objects
