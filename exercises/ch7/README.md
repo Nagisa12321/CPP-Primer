@@ -148,3 +148,42 @@ Sales_data item = {"10086", 25, 15.99};
 ## Exercises 7.53
 ## Exercises 7.54
 ## Exercises 7.55
+## Exercises 7.56
+- A class member that is associated with the class, rather than with individual objects of the class type.
+- each object can no need to store a common data. And if the data is changed, each object can use the new value.
+- a static data member can have incomplete type.
+- we can use a static member as a default argument.
+
+## Exercises 7.57
+## Exercises 7.58
+```c++
+// example.h
+class Example {
+public:
+    static double rate = 6.5;
+    static const int vecSize = 20;
+    static vector<double> vec(vecSize);
+};
+
+// example.c
+#include "example.h"
+double Example::rate;
+vector<double> Example::vec;
+```
+- change
+```c++
+// example.h
+class Example {
+public:
+    static double rate;
+    static constexpr int vecSize = 20;
+    static vector<double> vec(vecSize);
+};
+
+double Example::rate = 6.5;
+
+// example.c
+#include "example.h"
+double Example::rate;
+vector<double> Example::vec;
+```
