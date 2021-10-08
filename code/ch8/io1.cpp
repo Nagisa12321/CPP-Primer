@@ -11,13 +11,15 @@ int main() {
 
     int i;
     cin >> i;
-    cout << cin.good() << endl;
+    cout << cin.rdstate() << endl;
     cin.clear();
-    cout << cin.good() << endl;
+    // cin.ignore();
+    cin.sync();
+    cout << cin.rdstate() << endl;
 
     int j;
     cin >> j;
-    cout << cin.good() << endl;
+    cout << cin.rdstate() << endl;
     cout << "i = " << i << endl;
     cout << "j = " << j << endl;
 
