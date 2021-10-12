@@ -37,3 +37,16 @@
 ## Exercises 9.17
 - First, there must be the identical container and same type holded. Second, the type held must support relational operation. (@Mooophy)
 - Both c1 and c2 are the containers except the unordered associative containers.(@pezy)
+
+## Exercises 9.18
+## Exercises 9.19
+## Exercises 9.20
+## Exercises 9.21
+## Exercises 9.22
+## Exercises 9.23
+- the same.
+
+## Exercises 9.24
+## Exercises 9.25
+- nothing happen
+- delete to end;
