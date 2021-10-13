@@ -50,3 +50,41 @@
 ## Exercises 9.25
 - nothing happen
 - delete to end;
+
+## Exercises 9.26
+## Exercises 9.27
+## Exercises 9.28
+## Exercises 9.29
+## Exercises 9.30
+- should have a no prarm cons...
+
+## Exercises 9.31
+## Exercises 9.32
+
+## Exercises 9.33
+## Exercises 9.34
+## Exercises 9.35
+- The size of a container is the number of elements it already holds;
+- The capacity is how many elements it can hold before more space must be allocated.
+
+## Exercises 9.36 
+- can not.
+
+## Exercises 9.37
+- list don't need
+- array can not resize.
+
+## Exercises 9.38
+## Exercises 9.39
+## Exercises 9.40
+- 1024 / 2048
+
+## Exercises 9.41
+## Exercises 9.42
+## Exercises 9.43
+## Exercises 9.44
+## Exercises 9.45
+## Exercises 9.46
+## Exercises 9.47
+## Exercises 9.48
+- string::npos
