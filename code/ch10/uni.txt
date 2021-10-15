@@ -1,0 +1,125 @@
+std::unique
+ C++ Algorithm library 
+Defined in header <algorithm>
+(1)	
+template< class ForwardIt >
+ForwardIt unique( ForwardIt first, ForwardIt last );
+(until C++20)
+template< class ForwardIt >
+constexpr ForwardIt unique( ForwardIt first, ForwardIt last );
+(since C++20)
+template< class ExecutionPolicy, class ForwardIt >
+ForwardIt unique( ExecutionPolicy&& policy, ForwardIt first, ForwardIt last );
+(2)	(since C++17)
+(3)	
+template< class ForwardIt, class BinaryPredicate >
+ForwardIt unique( ForwardIt first, ForwardIt last, BinaryPredicate p );
+(until C++20)
+template< class ForwardIt, class BinaryPredicate >
+constexpr ForwardIt unique( ForwardIt first, ForwardIt last, BinaryPredicate p );
+(since C++20)
+template< class ExecutionPolicy, class ForwardIt, class BinaryPredicate >
+ForwardIt unique( ExecutionPolicy&& policy,
+                  ForwardIt first, ForwardIt last, BinaryPredicate p );
+(4)	(since C++17)
+Eliminates all except the first element from every consecutive group of equivalent elements from the range [first, last) and returns a past-the-end iterator for the new logical end of the range.
+
+Removing is done by shifting the elements in the range in such a way that elements to be erased are overwritten.
+
+1) Elements are compared using operator==. The behavior is undefined if it is not an equivalence relation.
+3) Elements are compared using the given binary predicate p. The behavior is undefined if it is not an equivalence relation.
+2,4) Same as (1,3), but executed according to policy. These overloads do not participate in overload resolution unless std::is_execution_policy_v<std::decay_t<ExecutionPolicy>> (until C++20) std::is_execution_policy_v<std::remove_cvref_t<ExecutionPolicy>> (since C++20) is true.
+Parameters
+first, last	-	the range of elements to process
+policy	-	the execution policy to use. See execution policy for details.
+p	-	binary predicate which returns ​true if the elements should be treated as equal.
+The signature of the predicate function should be equivalent to the following:
+
+ bool pred(const Type1 &a, const Type2 &b);
+
+While the signature does not need to have const &, the function must not modify the objects passed to it and must be able to accept all values of type (possibly const) Type1 and Type2 regardless of value category (thus, Type1 & is not allowed, nor is Type1 unless for Type1 a move is equivalent to a copy (since C++11)).
+The types Type1 and Type2 must be such that an object of type ForwardIt can be dereferenced and then implicitly converted to both of them.​
+
+Type requirements
+-ForwardIt must meet the requirements of LegacyForwardIterator.
+-The type of dereferenced ForwardIt must meet the requirements of MoveAssignable.
+Return value
+A ForwardIt to the new end of the range.
+
+Complexity
+For nonempty ranges, exactly std::distance(first,last) -1 applications of the corresponding predicate.
+
+Exceptions
+The overloads with a template parameter named ExecutionPolicy report errors as follows:
+
+If execution of a function invoked as part of the algorithm throws an exception and ExecutionPolicy is one of the standard policies, std::terminate is called. For any other ExecutionPolicy, the behavior is implementation-defined.
+If the algorithm fails to allocate memory, std::bad_alloc is thrown.
+Notes
+Relative order of the elements that remain is preserved and the physical size of the container is unchanged. Iterators in [r, last) (if any), where r is the return value, are still dereferenceable, but the elements themselves have unspecified values. A call to unique is typically followed by a call to a container's erase member function, which erases the unspecified values and reduces the physical size of the container to match its new logical size.
+
+Possible implementation
+See also the implementations in libstdc++, libc++, and MSVC STL.
+
+First version
+template<class ForwardIt>
+ForwardIt unique(ForwardIt first, ForwardIt last)
+{
+    if (first == last)
+        return last;
+ 
+    ForwardIt result = first;
+    while (++first != last) {
+        if (!(*result == *first) && ++result != first) {
+            *result = std::move(*first);
+        }
+    }
+    return ++result;
+}
+Second version
+template<class ForwardIt, class BinaryPredicate>
+ForwardIt unique(ForwardIt first, ForwardIt last, BinaryPredicate p)
+{
+    if (first == last)
+        return last;
+ 
+    ForwardIt result = first;
+    while (++first != last) {
+        if (!p(*result, *first) && ++result != first) {
+            *result = std::move(*first);
+        }
+    }
+    return ++result;
+}
+Example
+Run this code
+#include <algorithm>
+#include <iostream>
+#include <vector>
+ 
+int main()
+{
+    // a vector containing several duplicate elements
+    std::vector<int> v{1,2,1,1,3,3,3,4,5,4};
+    auto print = [&] (int id) {
+        std::cout << "@" << id << ": ";
+        for (int i : v)
+            std::cout << i << ' ';
+        std::cout << '\n';
+    };
+    print(1);
+ 
+    // remove consecutive (adjacent) duplicates
+    auto last = std::unique(v.begin(), v.end());
+    // v now holds {1 2 1 3 4 5 4 x x x}, where 'x' is indeterminate
+    v.erase(last, v.end());
+    print(2);
+ 
+    // sort followed by unique, to remove all duplicates
+    std::sort(v.begin(), v.end()); // {1 1 2 3 4 4 5}
+    print(3);
+ 
+    last = std::unique(v.begin(), v.end());
+    // v now holds {1 2 3 4 5 x x}, where 'x' is indeterminate
+    v.erase(last, v.end());
+    print(4);
+}
