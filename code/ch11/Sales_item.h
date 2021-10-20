@@ -143,4 +143,12 @@ double Sales_item::avg_price() const
     else
         return 0;
 }
+
+size_t hasher(const Sales_item &si) {
+    return hash<string>()(si.isbn());
+}
+
+bool eqOp(const Sales_item &s1, const Sales_item &s2) {
+    return s1.isbn() == s2.isbn();
+}
 #endif
