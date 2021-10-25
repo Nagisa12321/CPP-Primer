@@ -14,3 +14,18 @@
 ## Exercises 12.7
 ## Exercises 12.8
 - p is undefined.
+
+## Exercises 12.9
+## Exercises 12.10
+## Exercises 12.11
+## Exercises 12.12
+## Exercises 12.13
+## Exercises 12.14
+## Exercises 12.15
+## Exercises 12.16
+## Exercises 12.17
+## Exercises 12.18
+## Exercises 12.19
+## Exercises 12.20
+## Exercises 12.21
+- readable
