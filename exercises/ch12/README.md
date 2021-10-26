@@ -29,3 +29,16 @@
 ## Exercises 12.20
 ## Exercises 12.21
 - readable
+
+## Exercises 12.22
+## Exercises 12.23
+## Exercises 12.24
+## Exercises 12.25
+## Exercises 12.26
+## Exercises 12.27
+## Exercises 12.28
+## Exercises 12.29
+## Exercises 12.30
+## Exercises 12.31
+- set
+## Exercises 12.21
