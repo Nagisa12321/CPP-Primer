@@ -29,3 +29,52 @@ Point foo_bar(Point arg/* copy */) {
 ## Exercises 13.7
 - StrBlob: copy the shared_ptr, the used_count += 1;
 - StrBlobPtr: copy the weak_ptr, nothing change. 
+
+## Exercises 13.8
+## Exercises 13.9
+- The destructor is a member function with the name of the class prefixed by a tilde(~).
+- do nothing. 
+- The compiler defines a synthesized destructor for any class that does not define its own destructor.
+
+## Exercises 13.10
+- StrBlob: run the destructor, but nothing to do, then destory the member, it will run the destructor of shared_ptr, decrease the number of use_count when the use count is 0, delete the pointer. 
+- StrBlobPtr: ...., run the destructor of weak_ptr, but do nothing. 
+
+## Exercises 13.11
+## Exercises 13.12
+## Exercises 13.13
+## Exercises 13.14
+- output is the same sync
+
+## Exercises 13.15
+- Yes, maybe 3 different numbers. 
+
+## Exercises 13.16
+- Yes, maybe 3 different numbers. 
+
+## Exercises 13.17
+## Exercises 13.18
+## Exercises 13.19
+- do not need. 
+
+
+## Exercises 13.20
+- text_query
+  - copy: copy the shared_ptr, increase the use_count, copy the map(copy key and value, ....)
+  - opt=: same of copy
+  - destory: exec ~text_query(), but do nothing, and destory map, share_ptr, ... (something about shared_ptr)
+
+- query_result
+  - ....
+
+## Exercises 13.21
+- text_query: all is =delete;
+- query_result: can make it!
+
+## Exercises 13.22
+## Exercises 13.23
+- It's important to copy to a `tmp`
+
+## Exercises 13.24
+- If did not have a destructor, can not delete the *sp;
+- If did not have a copy constructor, double free will happen...
