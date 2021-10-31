@@ -14,18 +14,18 @@ public:
         val(hp.val), sp(new string(*hp.sp)) {
     }
 
-    // HasPtr &operator=(const HasPtr &hp) {
-    //     string *tmpsp = new string(*hp.sp);
-    //     delete sp;
-    //     sp = tmpsp;
-    //     val = hp.val;
-    //     return *this;
-    // }
-
-    HasPtr &operator=(HasPtr hp) {
-        swap(*this, hp);
+    HasPtr &operator=(const HasPtr &hp) {
+        string *tmpsp = new string(*hp.sp);
+        delete sp;
+        sp = tmpsp;
+        val = hp.val;
         return *this;
     }
+
+    // HasPtr &operator=(HasPtr hp) {
+    //     swap(*this, hp);
+    //     return *this;
+    // }
 
     ~HasPtr() {
         delete sp;
@@ -58,7 +58,10 @@ int main() {
     HasPtr h1(1, new string("hello"));
     HasPtr h2(2, new string("world"));
 
-    h1 = h2;
+    cout << "h1: " << h1.val << ", " << *h1.sp << endl;
+    cout << "h2: " << h2.val << ", " << *h2.sp << endl;
+    
+    swap(h1, h2);
 
     cout << "h1: " << h1.val << ", " << *h1.sp << endl;
     cout << "h2: " << h2.val << ", " << *h2.sp << endl;

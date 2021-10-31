@@ -78,3 +78,39 @@ Point foo_bar(Point arg/* copy */) {
 ## Exercises 13.24
 - If did not have a destructor, can not delete the *sp;
 - If did not have a copy constructor, double free will happen...
+
+## Exercises 13.25
+## Exercises 13.26
+## Exercises 13.27
+## Exercises 13.28
+## Exercises 13.29
+- Because HasPtr does not have a PasPtr member
+
+## Exercises 13.30
+## Exercises 13.31
+## Exercises 13.32
+- I think it's same
+
+## Exercises 13.33
+- Folder: will copy the folder, and then destory it, so the set of folders is fill with SHIT.
+- const Folder &: can not call add_message.
+
+## Exercises 13.34
+## Exercises 13.35
+- will not copy the message
+
+## Exercises 13.36
+## Exercises 13.37
+## Exercises 13.38
+-  In this case, swap function is special. It will be clear two Message's folders , then swap members, and added themselves to each folders. But, Message assignment operator just clear itself, and copy the members, and added itself to each folders. The rhs don't need to clear and add to folders. So, if using copy and swap to define, it will be very inefficiency.
+## Exercises 13.39
+## Exercises 13.40
+## Exercises 13.41
+- unconstruct
+
+## Exercises 13.42
+## Exercises 13.43
+## Exercises 13.44
+## Exercises 13.45
+- lvalue reference: reference that can bind to an lvalue. (Regular reference)
+- rvalue reference: reference to an object that is about to be destroyed.
