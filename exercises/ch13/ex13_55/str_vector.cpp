@@ -1,4 +1,4 @@
-#include "primer.h"
+#include "../primer.h"
 #include "str_vector.h"
 using namespace std;
 
@@ -7,34 +7,19 @@ string str_vector::s_nil;
 
 str_vector::str_vector() :
     m_elements(&s_nil), m_first_free(&s_nil), m_cap(&s_nil) {
-    cout << "default constructor. " << endl; 
-}
-
-str_vector::str_vector(initializer_list<string> li) : str_vector() {
-    for(const string &str : li)
-        push_back(str);
 }
 
 
 str_vector::str_vector(const str_vector &vec) {
-    cout << "copy constructor. " << endl; 
     reallocate(vec.m_elements, vec.size());
 }
 
-str_vector::str_vector(str_vector &&vec) noexcept : 
-    m_elements(vec.m_elements), m_first_free(vec.m_first_free), m_cap(vec.m_cap) {
-        cout << "move constructor. " << endl; 
-        vec.m_first_free = vec.m_cap = vec.m_elements = 0;
-}
-
 void str_vector::push_back(const string &s) {
-    cout << "push_back(const string &)" << endl;
     check_n_alloc();
     alloc.construct(m_first_free++, s);
 }
 
 void str_vector::push_back(string &&s) {
-    cout << "push_back(string &&)" << endl;
     check_n_alloc();
     alloc.construct(m_first_free++, std::move(s));
 }
@@ -42,19 +27,6 @@ void str_vector::push_back(string &&s) {
 str_vector &str_vector::operator=(const str_vector &vec) {
     free();
     reallocate(vec.m_elements, vec.size());
-    return *this;
-}
-
-str_vector &str_vector::operator=(str_vector &&vec) noexcept {
-    cout << "move operator. " << endl; 
-    if (&vec == this) return *this;
-    free();
-
-    m_elements = vec.m_elements;
-    m_cap = vec.m_cap;
-    m_first_free = vec.m_first_free;
-
-    vec.m_first_free = vec.m_cap = vec.m_elements = 0;
     return *this;
 }
 
@@ -124,45 +96,33 @@ str_vector::~str_vector() {
     free();
 }
 
-str_vector get_vector() {
+int main() {
+    cout << " ...." << endl; 
     str_vector vec;
-    vec.push_back("a");
-    vec.push_back("b");
-    vec.push_back("c");
-    return move(vec);
+    for (int i = 0; i < 100; ++i) {
+        vec.push_back("a");
+        cout << vec.size() << ", " << vec.capacity() << endl;
+    }
+
+    str_vector copy(vec);
+    cout << "copy.size(): " << copy.size() 
+         << ", copy.capacity(): " << copy.capacity() 
+         << endl;
+    cout << " ...." << endl; 
+    str_vector vec1;
+    vec1.push_back("a");
+    vec1.push_back("b");
+    vec1.push_back("c");
+    for (string *it = vec1.begin(); it != vec1.end(); ++it)
+        cout << *it << endl;
+    str_vector vec2(vec1);
+    vec2.push_back("d");
+    cout << " .." << endl;
+    for (string *it = vec1.begin(); it != vec1.end(); ++it)
+        cout << *it << endl;
+    cout << " .." << endl;
+    for (string *it = vec2.begin(); it != vec2.end(); ++it)
+        cout << *it << endl;
+    cout << " ...." << endl; 
+    return 0;
 }
-
-// int main() {
-//     cout << " ...." << endl; 
-//     str_vector vec;
-//     for (int i = 0; i < 100; ++i) {
-//         vec.push_back("a");
-//         cout << vec.size() << ", " << vec.capacity() << endl;
-//     }
-
-//     str_vector copy(vec);
-//     cout << "copy.size(): " << copy.size() 
-//          << ", copy.capacity(): " << copy.capacity() 
-//          << endl;
-//     cout << " ...." << endl; 
-//     str_vector vec1;
-//     vec1.push_back("a");
-//     vec1.push_back("b");
-//     vec1.push_back("c");
-//     for (string *it = vec1.begin(); it != vec1.end(); ++it)
-//         cout << *it << endl;
-//     str_vector vec2(vec1);
-//     vec2.push_back("d");
-//     cout << " .." << endl;
-//     for (string *it = vec1.begin(); it != vec1.end(); ++it)
-//         cout << *it << endl;
-//     cout << " .." << endl;
-//     for (string *it = vec2.begin(); it != vec2.end(); ++it)
-//         cout << *it << endl;
-//     cout << " ...." << endl; 
-//     str_vector vec3 = get_vector();
-//     for (auto it = vec3.begin(); it != vec3.end(); ++it)
-//         cout << *it << endl;
-//     cout << " ...." << endl; 
-//     return 0;
-// }

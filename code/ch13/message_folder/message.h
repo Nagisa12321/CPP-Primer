@@ -11,9 +11,11 @@ class message {
 public:
     explicit message(std::string);
     message(const message &);
+    message(message &&);
     ~message();
 
     message &operator=(const message &);
+    message &operator=(message &&);
 
     void save(folder &);
     void remove(folder &);
@@ -24,6 +26,7 @@ private:
 
     void add_all_folders();
     void remove_all_folders();
+    void move_all_folders(message *);
 };
 
 void swap(message &, message &);

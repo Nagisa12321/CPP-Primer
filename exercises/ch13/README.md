@@ -114,3 +114,33 @@ Point foo_bar(Point arg/* copy */) {
 ## Exercises 13.45
 - lvalue reference: reference that can bind to an lvalue. (Regular reference)
 - rvalue reference: reference to an object that is about to be destroyed.
+
+## Exercises 13.46
+## Exercises 13.47
+## Exercises 13.48
+## Exercises 13.49
+- add in the old code.  
+
+## Exercises 13.50
+- when reallocate. 
+
+## Exercises 13.51
+## Exercises 13.52
+```c++
+h2 = h1;  /* copy */
+
+```
+
+## Exercises 13.53
+- will make a new string; and delete the old;
+
+## Exercises 13.54
+## Exercises 13.55
+- add to the old code 
+
+## Exercises 13.56
+- not end loop: stack overflow
+
+## Exercises 13.57 
+- make a Foo with copy-constructor
+- call the rvalue sort; 

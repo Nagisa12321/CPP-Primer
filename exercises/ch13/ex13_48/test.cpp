@@ -10,15 +10,15 @@ int main() {
     String s("hello");
 
     cout << "test start!" << endl;
-    // for (int time = 10; time <= 1000000; time *= 10) {
-    //     vector<String> svec;
-    //     copy_times = 0;
-    //     for (int i = 0; i < time; ++i)
-    //         svec.push_back(s);
-    //     cout << "push_back: " << time  
-    //          << ", copy_times: " << copy_times
-    //          << endl;  
-    // }
+    for (int time = 10; time <= 10; time *= 10) {
+        vector<String> svec;
+        copy_times = 0;
+        for (int i = 0; i < time; ++i)
+            svec.push_back(s);
+        cout << "push_back: " << time  
+             << ", copy_times: " << copy_times
+             << endl;  
+    }
     /*
         test start!
         push_back: 10, copy_times: 25

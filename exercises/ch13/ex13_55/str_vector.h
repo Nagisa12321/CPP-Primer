@@ -9,13 +9,10 @@ class str_vector {
 public:
     typedef size_t size_type;
     str_vector();
-    str_vector(std::initializer_list<std::string>);
     str_vector(const str_vector &);
-    str_vector(str_vector &&) noexcept;
     ~str_vector();
 
     str_vector &operator=(const str_vector &);
-    str_vector &operator=(str_vector &&) noexcept;
 
     std::string *begin() const;
     std::string *end() const;

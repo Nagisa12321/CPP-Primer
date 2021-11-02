@@ -22,10 +22,10 @@ String::String(const String &str) {
     copy_in(str.m_begin, str.m_end, sz);
 }
 
-String::String(const String &&str) noexcept {
+String::String(String &&str) noexcept :
+    m_begin(str.m_begin), m_end(str.m_end), m_capacity(str.m_capacity) {
     cout << "move constructor. " << endl;
-    size_type sz = str.size();
-    copy_in(str.m_begin, str.m_end, sz);
+    str.m_begin = str.m_end = str.m_capacity = 0;
 }
 
 String::~String() {
@@ -37,6 +37,19 @@ String &String::operator=(const String &str) {
     if (&str == this) return *this;
     free();
     copy_in(str.m_begin, str.m_end, str.size());
+    return *this;
+}
+
+String &String::operator=(String &&str) {
+    cout << "move operator. " << endl;
+    if (&str == this) return *this;
+    free();
+    m_begin = str.m_begin;
+    m_end = str.m_end;
+    m_capacity = str.m_capacity;
+
+    str.m_capacity = str.m_begin = str.m_end = 0;
+
     return *this;
 }
 

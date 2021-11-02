@@ -16,10 +16,11 @@ public:
     String();
     explicit String(const char *);
     String(const String &);
-    String(const String &&) noexcept;
+    String(String &&) noexcept;
     ~String();
 
     String &operator=(const String &);
+    String &operator=(String &&);
     char &operator[](size_type) const;
     bool operator==(const String &) const;
 

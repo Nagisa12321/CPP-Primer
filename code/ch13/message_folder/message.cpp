@@ -10,6 +10,11 @@ message::message(const message &mess) :
     add_all_folders();
 }
 
+message::message(message &&mess) :
+    m_context(mess.m_context) {
+    move_all_folders(&mess);
+}
+
 message &message::operator=(const message &mess) {
     if (&mess == this)
         return;
@@ -18,6 +23,17 @@ message &message::operator=(const message &mess) {
     this->m_folders = set<folder *>(mess.m_folders);
     this->m_context = mess.m_context;
     add_all_folders();
+
+    return *this;
+}
+
+message &message::operator=(message &&mess) {
+    if (&mess == this)
+        return;
+
+    remove_all_folders();
+    this->m_context = move(mess.m_context);
+    move_all_folders(&mess);
 
     return *this;
 }
@@ -45,6 +61,16 @@ void message::remove_all_folders() {
     for (folder *folder : m_folders)
         folder->remove_message(this);
 }
+
+void message::move_all_folders(message *m) {
+    m_folders = std::move(m->m_folders);
+    for (auto folder : m_folders) {
+        folder->remove_message(m);
+        folder->add_message(this);
+    }
+    m->m_folders.clear();
+}
+
 
 void swap(message &m1, message &m2) {
     m1.remove_all_folders();
