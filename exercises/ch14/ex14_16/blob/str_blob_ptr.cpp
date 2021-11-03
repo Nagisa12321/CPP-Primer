@@ -60,6 +60,10 @@ str_blob_ptr str_blob_ptr::operator-(size_t sz) {
     return ret;
 }
 
-string &str_blob_ptr::operator*() {
+string &str_blob_ptr::operator*() const {
     return (*m_w_ptr.lock())[m_curr_index];
+}
+
+string *str_blob_ptr::operator->() const {
+    return &(**this);
 }

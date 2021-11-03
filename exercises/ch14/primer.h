@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <functional>
 
 // memory
 #include <memory>

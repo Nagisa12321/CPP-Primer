@@ -61,3 +61,21 @@
 - because will change the state of the class.
 
 
+## Exercises 14.30
+## Exercises 14.31
+- copy the share_ptr is a good behaviour;
+
+## Exercises 14.32
+- 0 - MAX(ARGS)
+
+## Exercises 14.33
+## Exercises 14.34
+## Exercises 14.35
+## Exercises 14.36
+## Exercises 14.37
+## Exercises 14.38
+## Exercises 14.39
+## Exercises 14.40
+## Exercises 14.41
+- using class every time
+  

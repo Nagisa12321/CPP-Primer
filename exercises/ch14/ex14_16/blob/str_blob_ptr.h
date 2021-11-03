@@ -22,7 +22,8 @@ public:
     str_blob_ptr &operator--();
     str_blob_ptr operator++(int);
     str_blob_ptr operator--(int);
-    std::string &operator*();
+    std::string &operator*() const;
+    std::string *operator->() const;
 private:
     std::weak_ptr<std::vector<std::string>> m_w_ptr;
     size_t m_curr_index;

@@ -21,7 +21,7 @@ bool operator!=(const str_blob &blob1, const str_blob &blob2) {
     return !(blob1 == blob2);
 }
 
-size_t str_blob::size() {
+size_t str_blob::size() const {
     return m_svec->size();    
 }
 
@@ -44,4 +44,12 @@ str_blob::iterator str_blob::begin() {
 
 str_blob::iterator str_blob::end() {
     return str_blob_ptr(*this, size());
+}
+
+str_blob::const_iterator str_blob::cbegin() const {
+    return const_str_blob_ptr(*this, 0);
+}
+
+str_blob::const_iterator str_blob::cend() const {
+    return const_str_blob_ptr(*this, size());
 }

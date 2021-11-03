@@ -17,4 +17,17 @@ int main() {
 
     cout << "\ntest3: " << endl;
     cout << *(b3.end() - 2) << endl;
+
+    cout << "\ntest4: " << endl;
+    str_blob b4{"hi", "bye", "now"};
+    str_blob_ptr ptr(b4);
+    *ptr = "okey";
+    cout << ptr->size() << endl;
+    cout << (*ptr).size() << endl;
+    cout << b4[0] << endl;
+
+    cout << "\ntest5: " << endl;
+    const str_blob blob{"a", "b", "c"};
+    for (auto it = blob.cbegin(); it != blob.cend(); ++it)
+        cout << *it << endl;
 }
