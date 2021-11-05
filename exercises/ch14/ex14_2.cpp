@@ -41,6 +41,17 @@ public:
         return *this;
     } 
 
+    explicit operator string() const { 
+        string _res;
+        std::ostringstream oss(_res);
+        oss << *this;
+        return _res;
+    }
+
+    explicit operator double() const {
+        return revenue;
+    }
+
     string isbn() const { return this->bookNo; }
     sales_data &combine(const sales_data &);
     double avg_price() const;

@@ -79,3 +79,75 @@
 ## Exercises 14.41
 - using class every time
   
+## Exercises 14.42
+## Exercises 14.43
+## Exercises 14.44
+## Exercises 14.45
+## Exercises 14.46
+## Exercises 14.47
+```c++
+struct Integral {
+    operator const int();    // = operator int(); 
+    operator int() const;    // a const Integral can call this
+}
+```
+## Exercises 14.48
+- no!
+## Exercises 14.49
+
+## Exercises 14.50
+```c++
+struct LongDouble {
+    LongDouble(double = 0.0);
+    operator double();
+    operator float();
+};
+
+// ... 
+
+LongDouble ldObj;
+int ex1 = ldObj; // error
+float ex2 = ldObj; // call operator float();
+```
+
+## Exercises 14.51
+```
+void calc(int);
+void calc(LongDouble);
+
+double dval;
+calc(dval);
+```
+
+## Exercises 14.52
+```c++
+struct LongDouble {
+    LongDouble(double = 0.0);
+    operator double();
+    operator float();
+    LongDouble operator+(const SmallInt &);
+};
+
+LongDouble operator+(LongDouble &, double);
+
+// ... 
+
+SmallInt si;
+LongDouble ld;
+
+/**
+ * opt(double, double) 
+ * opt(LongDouble, double)
+ */
+ld = si + ld;   
+
+/**
+ * opt(LongDouble &, const SmallInt &) <---
+ * opt(LongDouble &, double)
+ */
+ld = ld + si;   
+
+```
+
+## Exercises 14.53
+- no

@@ -25,4 +25,7 @@
 // memory
 #include <memory>
 
+// function
+#include <functional>
+
 #endif
