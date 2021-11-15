@@ -39,10 +39,53 @@ Foo1 &foo_pointer = &foo2;
 
 ```
 
-## Exercises 15.10
+## Exercises 15.10`
 - `ifstream` -> `istream &`
 
 ## Exercises 15.11
 ## Exercises 15.12
 - yes: override means rewrite the base class's function.
 - but final means my children can not rewrite my function
+
+
+## Exercises 15.13
+## Exercises 15.14
+## Exercises 15.15
+## Exercises 15.16
+## Exercises 15.17
+```
+error: cannot declare variable ‘d’ to be of abstract type ‘disc_quote’
+```
+
+
+## Exercises 15.18
+
+```c++
+Base *p = &d1; 
+p = &d2;        // error
+p = &d3;        // error
+p = &dd1;       
+p = &dd2;       // error
+p = &dd3;       // error
+```
+
+## Exercises 15.19
+- Pub_Derv: ok
+- Priv_Derv: ok
+- Prot_Derv: ok
+- Derived_from_Public: ok
+- Derived_from_Private: no
+- Derived_from_Protected: ok
+
+## Exercises 15.20
+## Exercises 15.21
+## Exercises 15.22
+## Exercises 15.23
+- `using base::fcn;` or `int fcn()`
+
+## Exercises 15.24
+- base class 
+- Using virtual destructors, you can destroy objects without knowing their type — the correct destructor for the object is invoked using the virtual function mechanism. Note that destructors can also be declared as pure virtual functions for abstract classes
+
+## Exercises 15.25
+- can not write a constructor for `bulk_quote`
