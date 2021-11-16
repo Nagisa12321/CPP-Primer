@@ -5,23 +5,19 @@
 
 class quote {
 public:
-    quote();
+    quote() = delete;
+    quote(const quote &q) = default;
+    quote(quote &&q) = default;
     quote(const std::string &book, double sales_price);
-    quote(const quote &q);
-    quote(quote &&);
-    quote &operator=(const quote &q);
-    quote &operator=(quote &&q);
+    virtual ~quote();
 
-    virtual quote* clone() const &;
-    virtual quote* clone() &&;
+    quote &operator=(const quote &) = default;
+    quote &operator=(quote &&) = default;
 
     std::string isbn() const;
-
     virtual double net_price(std::size_t n) const;
-#ifdef NDEBUG
-    virtual void debug();
-#endif 
-    virtual ~quote();
+    virtual quote *clone() const &;
+    virtual quote *clone() &&;
     
 private:
     std::string m_bookNo;
@@ -29,7 +25,6 @@ private:
 protected:  
     double m_price = 0.0;
 };
-
 
 double print_total(std::ostream &os, const quote &item, std::size_t n);
 

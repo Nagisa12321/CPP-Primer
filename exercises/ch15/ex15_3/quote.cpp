@@ -18,7 +18,7 @@ double quote::net_price(std::size_t n) const {
     return n * m_price;
 }
 
-quote::~quote() = default;
+quote::~quote() { cout << "~quote()" << endl; };
 
 double print_total(ostream &os, const quote &item, size_t n) {
     double ret = item.net_price(n);
@@ -28,6 +28,44 @@ double print_total(ostream &os, const quote &item, size_t n) {
        << endl;
     return ret;
 }
+
+quote::quote(const quote &q)
+    : m_bookNo(q.m_bookNo),
+      m_price(q.m_price)
+{
+    cout << "quote(const quote &)" << endl;
+}
+
+quote::quote(quote &&q)
+    : m_bookNo(std::move(q.m_bookNo)),
+      m_price(std::move(q.m_price))
+{
+    cout << "quote(quote &&)" << endl;
+}
+
+quote &quote::operator=(const quote &q) {
+    cout << "quote &quote::operator=(const quote &q)" << endl;
+    if (&q == this) return *this;
+    this->m_price = q.m_price;
+    this->m_bookNo = q.m_bookNo;
+    return *this;
+}
+
+quote &quote::operator=(quote &&q) {
+    cout << "quote &quote::operator=(quote &&q)" << endl;
+    this->m_price = std::move(q.m_price);
+    this->m_bookNo = std::move(q.m_bookNo);
+    return *this;
+}
+
+quote* quote::clone() const & {
+    return new quote(*this);
+}
+
+quote* quote::clone() && {
+    return new quote(std::move(*this));
+}
+
 
 #ifdef NDEBUG
 void quote::debug() {

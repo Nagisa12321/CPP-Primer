@@ -19,7 +19,5 @@ double quote::net_price(std::size_t n) const {
     return n * m_price;
 }
 
-quote::~quote() {
-    cout << "~quote()" << endl;
-};
+quote::~quote() = default;
 
