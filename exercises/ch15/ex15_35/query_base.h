@@ -10,6 +10,11 @@ class query_base {
     friend class query;
 
 protected:
+    query_base();
+    query_base(const query_base &qb) = default;
+
+    query_base &operator=(const query_base &qb) = default;
+
     virtual ~query_base() = default;
 
 private:

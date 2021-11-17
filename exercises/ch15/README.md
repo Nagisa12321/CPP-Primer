@@ -89,3 +89,54 @@ p = &dd3;       // error
 
 ## Exercises 15.25
 - can not write a constructor for `bulk_quote`
+
+## Exercises 15.26
+## Exercises 15.27
+## Exercises 15.28
+## Exercises 15.29
+## Exercises 15.30
+## Exercises 15.31
+## Exercises 15.32
+- Query:
+  - copy: do the shared_ptr<base_query> copy.
+  - move: do the shared_ptr<base_query> move. exchange the pointer
+  - opt=: do the shared_ptr<base_query> opt=;
+  - destory: if the use_count of the shared_ptr<base_query>, the obj will be delete
+
+## Exercises 15.33
+- The Query_base here is an abstract base class, which cannot be used directly to generate corresponding objects.
+- So the next few questions cannot be answered.
+
+## Exercises 15.34
+- (a)
+    ```c++
+    query q = query("fiery") & query("bird") | query("wind");
+    // query(const string &word);                                           3 times
+    // word_query(const std::string &word)                                  3 times 
+    // binary_query(const query &q1, const query &q2, std::string m_opt);   2 times
+    // and_query(const query &q1, const query &q2);                         1 times
+    // query::query(std::shared_ptr<query_base> query);                     2 times
+    // or_query(const query &q1, const query &q2);                          1 times
+    // query(const query &);                                                1 times
+
+    ```
+- (b)
+    - `cout << q` will call `m_p_qb->rep();`
+    - and the `m_p_qb` now is `or_query` 
+    - so the `std::string binary_query::rep() const;` will be called;
+
+- (c)
+    - now the `q` is `or_query` so will call `query_result or_query::eval(text_query &tq);`
+
+## Exercises 15.35
+## Exercises 15.36
+## Exercises 15.37
+- nothing to do.
+
+## Exercises 15.38
+## Exercises 15.39
+## Exercises 15.40
+- rhs is empty: return a query_result that equal to lhs;
+- all empty: return the query_result that is empty;
+## Exercises 15.41
+## Exercises 15.42

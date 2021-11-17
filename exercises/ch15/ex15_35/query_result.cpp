@@ -13,9 +13,14 @@ std::shared_ptr<std::vector<std::string>> query_result::get_context() {
     return m_context;
 }
 
-std::shared_ptr<std::set<int>> query_result::get_lines() {
-    return m_lines;
+query_result::const_iterator query_result::cbegin() const {
+    return m_lines->cbegin();
 }
+
+query_result::const_iterator query_result::cend() const {
+    return m_lines->cend();
+}
+
 
 std::ostream &operator<<(std::ostream &os, const query_result &qr) {
     os << "element occours " << qr.m_lines->size() << " times. " << endl;

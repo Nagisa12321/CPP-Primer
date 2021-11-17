@@ -9,9 +9,12 @@ class query_result {
     friend std::ostream &operator<<(std::ostream &os, const query_result &qr);
 
 public:
+    typedef std::set<int>::const_iterator const_iterator;
+
     query_result(std::shared_ptr<std::vector<std::string>> context, std::shared_ptr<std::set<int>> lines);
     std::shared_ptr<std::vector<std::string>> get_context();
-    std::shared_ptr<std::set<int>> get_lines();
+    const_iterator cbegin() const;
+    const_iterator cend() const;
 
 private:
     std::shared_ptr<std::vector<std::string>> m_context;
