@@ -18,6 +18,7 @@ public:
     typedef blob_ptr<T> iterator;
     blob();
     blob(std::initializer_list<T> li);
+    template <typename InputIterator> blob(InputIterator iter1, InputIterator iter2);
 
     void push_back(const T &t);
     void push_back(T &&t);
@@ -48,6 +49,14 @@ blob<T>::blob(std::initializer_list<T> li)
     : m_vector(std::make_shared<std::vector<T>>(li))
 {
 
+}
+
+template <typename T>
+template <typename InputIterator>
+inline blob<T>::blob(InputIterator iter1, InputIterator iter2)
+    : m_vector(std::make_shared<std::vector<T>>(iter1, iter2))
+{
+    
 }
 
 template <typename T>

@@ -5,6 +5,10 @@
 template <typename T>
 class Vec {
 public:
+    typedef T *iterator;
+    typedef const T *const_iterator;
+    typedef size_t size_type;
+
     Vec();
     Vec(const Vec &v);
     Vec(Vec &&v);
@@ -12,19 +16,19 @@ public:
 
     Vec &operator=(const Vec &v);
     Vec &operator=(Vec &&v);
-    const T &operator[](size_t index) const;
-    T &operator[](size_t index);
+    const T &operator[](size_type index) const;
+    T &operator[](size_type index);
 
     void push_back(const T &t);
     void push_back(T &&t);
     void pop_back();
-    T *begin();
-    T *end();
-    const T *cbegin() const;
-    const T *cend() const;
+    iterator begin();
+    iterator end();
+    const_iterator cbegin() const;
+    const_iterator cend() const;
     bool empty() const;
-    size_t size() const;
-    size_t capacity() const;
+    size_type size() const;
+    size_type capacity() const;
 
 private:
     static std::allocator<T> alloc;
@@ -87,12 +91,12 @@ Vec<T> &Vec<T>::operator=(Vec<T> &&v) {
 }
 
 template <typename T>
-const T &Vec<T>::operator[](size_t index) const {
+const T &Vec<T>::operator[](typename Vec<T>::size_type index) const {
     return m_begin[index];
 }
 
 template <typename T>
-T &Vec<T>::operator[](size_t index) {
+T &Vec<T>::operator[](typename Vec<T>::size_type index) {
     return m_begin[index];
 }
 
@@ -109,22 +113,22 @@ void Vec<T>::push_back(T &&t) {
 }
 
 template <typename T>
-T *Vec<T>::begin() {
+typename Vec<T>::iterator Vec<T>::begin() {
     return m_begin;
 }
 
 template <typename T>
-T *Vec<T>::end() {
+typename Vec<T>::iterator Vec<T>::end() {
     return m_first_free;
 }
 
 template <typename T>
-const T *Vec<T>::cbegin() const {
+typename Vec<T>::const_iterator Vec<T>::cbegin() const {
     return m_begin;
 }
 
 template <typename T>
-const T *Vec<T>::cend() const {
+typename Vec<T>::const_iterator Vec<T>::cend() const {
     return m_first_free;
 }
 
@@ -134,12 +138,12 @@ bool Vec<T>::empty() const {
 }
 
 template <typename T>
-inline size_t Vec<T>::size() const {
+inline typename Vec<T>::size_type Vec<T>::size() const {
     return m_first_free - m_begin;
 }
 
 template <typename T>
-inline size_t Vec<T>::capacity() const {
+inline typename Vec<T>::size_type Vec<T>::capacity() const {
     return m_cap - m_begin;
 }
 

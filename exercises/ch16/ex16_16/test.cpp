@@ -28,7 +28,7 @@ int main() {
 
     cout << "\ntest3 start: " << endl;
     Vec<int> ivec3(ivec2);
-    int *cur = ivec3.begin();
+    Vec<int>::iterator cur = ivec3.begin(); 
     while (cur != ivec3.end())
         cout << *cur++ << " ";
     cout << endl;

@@ -21,3 +21,44 @@
 ## Exercises 16.12
 ## Exercises 16.13
 - 1 <=> 1
+## Exercises 16.14
+## Exercises 16.15
+## Exercises 16.16
+
+## Exercises 16.17
+- When using template members, because the compiler does not have the definition of the template, when the members used are types, typename should be used to remind the compiler
+
+## Exercises 16.17
+```c++
+// a
+template <typename T, U, typename V> void f1(T, U, V);  // error
+template <typename T, typename U, typename V> void f1(T, U, V);
+
+// b 
+template <typename T> T f2(int &T); // error
+template <typename T> T f2(int &i); 
+
+// c
+inline template <typename T> T foo(T, unsigned int *);  // error
+template <typename T> inline T foo(T, unsigned int *);
+
+// d 
+template <typename T> f4(T, T); // error
+template <typename T> T f4(T, T);
+
+// f
+typedef char Ctype;
+template <typename Ctype> Ctype f5(Ctype a)
+```
+
+## Exercises 16.18
+## Exercises 16.19
+## Exercises 16.20
+## Exercises 16.21
+## Exercises 16.22
+## Exercises 16.23
+- just one delete because .... 
+
+## Execises 16.24
+- Declare the string version of the template class
+- Fully instantiate the Sales_data version of the template class
