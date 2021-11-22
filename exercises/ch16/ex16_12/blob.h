@@ -2,8 +2,8 @@
 #define BLOB_H
 #include <memory>
 #include <vector>
-#include "blob_ptr.h"
-
+// #include "blob_ptr.h"
+#include "my_shared_ptr.h"
 template <typename T> class blob_ptr;
 template <typename T> class blob;
 template <typename T> 
@@ -18,7 +18,7 @@ public:
     typedef blob_ptr<T> iterator;
     blob();
     blob(std::initializer_list<T> li);
-    template <typename InputIterator> blob(InputIterator iter1, InputIterator iter2);
+    // template <typename InputIterator> blob(InputIterator iter1, InputIterator iter2);
 
     void push_back(const T &t);
     void push_back(T &&t);
@@ -28,36 +28,36 @@ public:
     T &operator[](size_type index);
     const T &operator[](size_type index) const;
 
-    iterator begin();
-    iterator end();
+    // iterator begin();
+    // iterator end();
 
     bool empty() const;
     size_type size() const;
 private:
-    std::shared_ptr<std::vector<T>> m_vector;
+    my_shared_ptr<std::vector<T>> m_vector;
 };
 
 template <typename T>
 blob<T>::blob() 
-    : m_vector(std::make_shared<std::vector<T>>())
+    : m_vector(my_shared_ptr<std::vector<T>>(new std::vector<T>()))
 {
 
 }
 
 template <typename T>
 blob<T>::blob(std::initializer_list<T> li) 
-    : m_vector(std::make_shared<std::vector<T>>(li))
+    : m_vector(my_shared_ptr<std::vector<T>>(new std::vector<T>(li)))
 {
 
 }
 
-template <typename T>
-template <typename InputIterator>
-inline blob<T>::blob(InputIterator iter1, InputIterator iter2)
-    : m_vector(std::make_shared<std::vector<T>>(iter1, iter2))
-{
+// template <typename T>
+// template <typename InputIterator>
+// inline blob<T>::blob(InputIterator iter1, InputIterator iter2)
+//     : m_vector(std::make_shared<std::vector<T>>(iter1, iter2))
+// {
     
-}
+// }
 
 template <typename T>
 void blob<T>::push_back(const T &t) {
@@ -89,15 +89,15 @@ const T &blob<T>::operator[](size_type index) const {
     return (*m_vector)[index];
 }
 
-template <typename T>  
-typename blob<T>::iterator blob<T>::begin() {
-    return blob_ptr<T>(*this, 0);
-}
+// template <typename T>  
+// typename blob<T>::iterator blob<T>::begin() {
+//     return blob_ptr<T>(*this, 0);
+// }
 
-template <typename T>
-typename blob<T>::iterator blob<T>::end() {
-    return blob_ptr<T>(*this, size());
-}
+// template <typename T>
+// typename blob<T>::iterator blob<T>::end() {
+//     return blob_ptr<T>(*this, size());
+// }
 
 
 template <typename T>

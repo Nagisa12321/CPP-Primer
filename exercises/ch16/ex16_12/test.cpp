@@ -31,11 +31,11 @@ int main() {
     vector<int> ivec;
     ivec.push_back(1);
 
-    cout << "\ntest2 start: " << endl;
-    blob<int> iblob{1, 2, 3, 4, 5};
-    blob<int>::iterator cur = iblob.begin();
-    while (cur != iblob.end())
-        cout << *cur++ << endl;
+    // cout << "\ntest2 start: " << endl;
+    // blob<int> iblob{1, 2, 3, 4, 5};
+    // blob<int>::iterator cur = iblob.begin();
+    // while (cur != iblob.end())
+    //     cout << *cur++ << endl;
     
     cout << "\ntest3 start: " << endl;
     typedef blob<string> str_blob;
