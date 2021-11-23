@@ -28,4 +28,15 @@
 // function
 #include <functional>
 
+template <typename T>
+void primer_show(const T &t) {
+    std::cout << "[";
+    for (int i = 0; i < t.size(); ++i) {
+        std::cout << t[i];
+        if (i != t.size() - 1)
+            std::cout << ", ";
+    }
+    std::cout << "]" << std::endl;
+}
+
 #endif
