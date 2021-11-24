@@ -147,3 +147,46 @@ g(i * ci);
 ## Exercises 16.44
 - T: int, int, int
 - const T &: int, int, int
+
+## Exercises 16.45
+
+## Exercises 16.46
+- Move objects in the old space to the new space, and the objects in the old space become destructible
+
+## Exercises 16.47
+## Exercises 16.48
+## Exercises 16.49
+```c++
+template <typename T> void f(T);
+template <typename T> void f(const T *);
+template <typename T> void g(T);
+template <typename T> void g(T *);
+int i = 42, *p = &i;
+const int ci = 0, *p2 = &ci;
+g(42);
+f(42);
+// g(T) -> g(int *), T -> int *, int * -> int *
+// g(T *) -> g(int *), T -> int, int * -> int *
+g(p);
+// f(T) -> f(int *), T -> int *, int * -> int *
+// f(const T *) -> f(const int *), T -> int, int * -> const int *
+f(p);
+g(ci);
+f(ci);
+// g(T) -> g(const int *), T -> const int *, const int * -> const int *
+// g(T *) -> g(const int *), T -> const int, const int * -> const int *
+g(p2);
+// f(T) -> f(const int *), T -> const int *, const int * -> const int *
+// f(const T *) -> f(const int *), T -> int, const int * -> const int * 
+f(p2);
+/*
+template <typename T> void g(T);
+template <typename T> void f(T);
+template <typename T> void g(T *);
+template <typename T> void f(T);
+template <typename T> void g(T);
+template <typename T> void f(T);
+template <typename T> void g(T *);
+template <typename T> void f(const T *);
+*/
+```
