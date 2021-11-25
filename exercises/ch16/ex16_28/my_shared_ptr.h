@@ -202,4 +202,10 @@ void my_shared_ptr<T>::destory(my_shared_ptr *p) {
         delete m_deleter;
     }
 }
+
+template <typename T, typename... Args>
+my_shared_ptr<T> make_my_shared(Args &&...args) {
+    return my_shared_ptr<T>(new T(std::forward(args)...));
+}
+
 #endif // MY_SHARED_PTR_H 

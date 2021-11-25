@@ -51,9 +51,8 @@ struct List
         // destroy list nodes sequentially in a loop, the default destructor
         // would have invoked its `next`'s destructor recursively, which would
         // cause stack overflow for sufficiently large lists.
-        while (head) 
+        while (head)
             head = std::move(head->next);
-        
     }
  
     void push(int data)
@@ -67,7 +66,7 @@ int main()
     std::cout << "1) Unique ownership semantics demo\n";
     {
         // Create a (uniquely owned) resource
-        my_unique_ptr<D> p(new D());
+        my_unique_ptr<D> p = make_my_unique<D>();
  
         // Transfer ownership to `pass_through`,
         // which in turn transfers ownership back through the return value
@@ -80,7 +79,7 @@ int main()
     std::cout << "\n" "2) Runtime polymorphism demo\n";
     {
         // Create a derived resource and point to it via base type
-        my_unique_ptr<B> p = my_unique_ptr<D>(new D());
+        my_unique_ptr<B> p = make_my_unique<D>();
  
         // Dynamic dispatch works as expected
         p->bar();
@@ -108,7 +107,12 @@ int main()
     }
     catch (const std::exception&) { std::cout << "Caught exception\n"; }
  
-    std::cout << "\n" "5) Linked list demo\n";
+    // std::cout << "\n" "5) Array form of unique_ptr demo\n";
+    // {
+    //     my_unique_ptr<D> p(new D[3]);
+    // } // `D::~D()` is called 3 times
+ 
+    std::cout << "\n" "6) Linked list demo\n";
     {
         List wall;
         for (int beer = 0; beer != 1'000'000; ++beer)
@@ -117,27 +121,3 @@ int main()
         std::cout << "1'000'000 bottles of beer on the wall...\n";
     } // destroys all the beers
 }
-
-/*
-1) Unique ownership semantics demo
-D::D
-D::bar
-D::~D
- 
-2) Runtime polymorphism demo
-D::D
-D::bar
-D::~D
- 
-3) Custom deleter demo
-x
- 
-4) Custom lambda-expression deleter and exception safety demo
-D::D
-destroying from a custom deleter...
-D::~D
-Caught exception
- 
-5) Linked list demo
-1'000'000 bottles of beer on the wall...
-*/

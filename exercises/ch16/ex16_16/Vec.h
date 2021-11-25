@@ -21,6 +21,7 @@ public:
 
     void push_back(const T &t);
     void push_back(T &&t);
+    template <typename... Args> void emplace_back(Args &&...args);
     void pop_back();
     iterator begin();
     iterator end();
@@ -97,7 +98,9 @@ const T &Vec<T>::operator[](typename Vec<T>::size_type index) const {
 
 template <typename T>
 T &Vec<T>::operator[](typename Vec<T>::size_type index) {
-    return m_begin[index];
+    return const_cast<T &>(
+        static_cast<const Vec<T> &>(*this)[index]
+    );
 }
 
 template <typename T>
@@ -110,6 +113,13 @@ template <typename T>
 void Vec<T>::push_back(T &&t) {
     resize();
     alloc.construct(m_first_free++, std::move(t));
+}
+
+template <typename T>
+template <typename... Args>
+void Vec<T>::emplace_back(Args &&...args) {
+    resize();
+    alloc.construct(m_first_free++, std::forward<Args>(args)...);
 }
 
 template <typename T>

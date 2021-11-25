@@ -34,10 +34,17 @@ int main() {
     cout << endl;
     ivec3 = ivec1;
 
-    cout << "\ntest4 start: " << endl;
-    Vec<string> svec1;
-    for (int i = 0; i < 0xff; ++i) {
-        svec1.push_back(to_string(i));
-        cout << svec1.size() << ", " << svec1.capacity() << endl;
-    }
+    // cout << "\ntest4 start: " << endl;
+    // Vec<string> svec1;
+    // for (int i = 0; i < 0xff; ++i) {
+    //     svec1.push_back(to_string(i));
+    //     cout << svec1.size() << ", " << svec1.capacity() << endl;
+    // }
+
+    cout << "\ntest5 start: " << endl;
+    Vec<string> svec2;
+    for (int i = 0; i < 0xf; ++i) {
+        svec2.emplace_back(i + 1, 'R');
+    } 
+    show(svec2);
 }

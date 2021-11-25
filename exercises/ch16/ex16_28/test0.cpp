@@ -34,7 +34,7 @@ void thr(my_shared_ptr<Base> p)
  
 int main()
 {
-    my_shared_ptr<Base> p = my_shared_ptr<Derived>();
+    my_shared_ptr<Base> p = make_my_shared<Derived>();
  
     std::cout << "Created a shared Derived (as a pointer to Base)\n"
               << "  p.get() = " << p.get()

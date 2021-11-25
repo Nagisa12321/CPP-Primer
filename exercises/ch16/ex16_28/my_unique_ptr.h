@@ -1,6 +1,6 @@
 #ifndef MY_UNIQUE_PTR_H
 #define MY_UNIQUE_PTR_H
-
+#include <utility>
 class default_deleter {
 public:
     template <typename _PointerType> 
@@ -65,19 +65,13 @@ my_unique_ptr<T, _Deleter>::~my_unique_ptr() {
 
 template <typename T, typename _Deleter>
 my_unique_ptr<T, _Deleter> &my_unique_ptr<T, _Deleter>::operator=(my_unique_ptr &&p) {
-    // T *tmp = m_pointer;
-
-    // m_pointer = p.m_pointer;
-    // m_deleter = p.m_deleter;
-    // p.m_pointer = 0;
-    
-    // m_deleter(tmp);
-
-    m_deleter(m_pointer);
+    T *tmp = m_pointer;
 
     m_pointer = p.m_pointer;
     m_deleter = p.m_deleter;
     p.m_pointer = 0;
+    
+    m_deleter(tmp);
 
     return *this;
 }
@@ -133,4 +127,11 @@ void my_unique_ptr<T, _Deleter>::reset(T *p) {
     m_deleter(m_pointer);
     m_pointer = p;
 }
+
+
+template <typename T, typename... Args>
+my_unique_ptr<T> make_my_unique(Args &&...args) {
+    return my_unique_ptr<T>(new T(std::forward(args)...));
+}
+
 #endif // MY_UNIQUE_PTR_H

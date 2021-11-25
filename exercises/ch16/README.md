@@ -190,3 +190,30 @@ template <typename T> void g(T *);
 template <typename T> void f(const T *);
 */
 ```
+
+## Exercises 16.50
+## Exercises 16.51
+## Exercises 16.52
+## Exercises 16.53
+## Exercises 16.54
+## Exercises 16.55
+## Exercises 16.56
+## Exercises 16.57
+- can pass the different type of value to it.
+
+## Exercises 16.58
+## Exercises 16.59
+- will call the string's copy constructor.
+
+## Exercises 16.60
+## Exercises 16.61
+## Exercises 16.62
+## Exercises 16.63
+## Exercises 16.64
+## Exercises 16.65
+
+## Exercises 16.66
+- Will change the matching order
+
+## Exercises 16.67
+- No, becauuse it is also the template!
